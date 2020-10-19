@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Spelling checker service</title>
+        <script src="js/index.js"></script>
+        <link href="style/main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <h1>Spelling checker service</h1>
+        </header>
+        <main class="container">
+            <form class="form" onSubmit="return onSubmit()">
+                <label for="word" class="row">Word:
+                    <input id="word" class="row" placeholder="Enter word" /></label>
+                <label for="language" class="row">Language:
+                    <select id="language" class="row" placeholder="Select language" value="en"></select></label>
+                <button type="submit" class="row">Spellcheck</button>
+            </form>
+            <section class="result">
+                <div id="status" class="row"></div>
+                <ul id="suggestions" class="suggesions"></ul>
+                <progress id="progress" class="row"></progress>
+            </section>
+        </main>
+        <footer>
+            <p>This system uses <a href="https://hunspell.github.io/">hunspell</a> spelling dictionaries.</p>
+            <h2>API</h2>
+            <ul>
+                <li><code>spellcheck/:language/:word</code>: Check the word in the given language for spelling mistakes.
+                    <a href="/spellcheck/en/Educashion">Example</a></li>
+                <li><code>list/languages</code>: List available languages. <a href="/list/languages">Example</a></li>
+            </ul>
+        </footer>
+    </body>

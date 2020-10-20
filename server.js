@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
+app.use(cors()) // Enable cors
 const Nodehun = require('nodehun')
 const fs = require('fs')
 const path = require('path')

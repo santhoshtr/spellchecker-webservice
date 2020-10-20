@@ -5,6 +5,7 @@
         "logs": "kubectl logs -f $(kubectl get pods | head -2 | tail -1 | cut -d ' ' -f 1)"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "dictionary-bg": "^1.3.3",
         "dictionary-br": "^1.1.1",
         "dictionary-ca": "^2.5.1",

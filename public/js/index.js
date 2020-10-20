@@ -44,7 +44,14 @@ function onLoad () {
     languages.map((language) => {
       const option = document.createElement('option')
       option.value = language
-      option.textContent = Intl.DisplayNames ? new Intl.DisplayNames(['en'], { type: 'language' }).of(language) : language
+      if (language === 'en') {
+        option.selected = true
+      }
+      let languageName = language
+      if (Intl.DisplayNames) {
+        languageName += ' - ' + new Intl.DisplayNames(['en'], { type: 'language' }).of(language)
+      }
+      option.textContent = languageName
       languagesNode.appendChild(option)
     })
   })

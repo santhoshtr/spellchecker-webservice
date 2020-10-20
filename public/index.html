@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,17 +8,22 @@
         <script src="js/index.js"></script>
         <link href="style/main.css" rel="stylesheet" type="text/css" />
     </head>
+
     <body>
         <header>
             <h1>Spellchecker</h1>
         </header>
         <main class="container">
             <form class="form" onSubmit="return onSubmit()">
-                <label for="word" class="row">Word:
-                    <input id="word" class="row" placeholder="Enter word" /></label>
-                <label for="language" class="row">Language:
-                    <select id="language" class="row" placeholder="Select language" value="en"></select></label>
-                <button type="submit" class="row">Spellcheck</button>
+                <div class="row">
+                    <label for="word" class="row">Word</label>
+                    <input id="word" class="row" placeholder="Enter a word" required/>
+                </div>
+                <div class="row">
+                    <label for="language" class="row">Language</label>
+                    <select id="language" class="row" placeholder="Select a language"></select>
+                </div>
+                <button type="submit">Spellcheck</button>
             </form>
             <section class="result">
                 <div id="status" class="row"></div>
@@ -26,13 +32,15 @@
             </section>
         </main>
         <footer>
-            <p>This spellchecker service is based on <a href="https://hunspell.github.io/">hunspell</a> spelling dictionaries. Supports 90 languages now.</p>
+            <p>This spellchecker service is based on <a href="https://hunspell.github.io/">hunspell</a> spelling
+                dictionaries. Supports 90 languages now.</p>
             <h2>API</h2>
             <ul>
                 <li><code>spellcheck/:language/:word</code>: Check the word in the given language for spelling mistakes.
                     <a href="/spellcheck/en/Educashion">Example</a></li>
                 <li><code>list/languages</code>: List available languages. <a href="/list/languages">Example</a></li>
             </ul>
-            <p><a href="https://github.com/santhoshtr/spellchecker-webservice">Source code</a> | &copy; <a href="https://thottingal.in">Santhosh Thottingal</a> | MIT Licensed</p>
+            <p><a href="https://github.com/santhoshtr/spellchecker-webservice">Source code</a> | &copy; <a
+                    href="https://thottingal.in">Santhosh Thottingal</a> | MIT Licensed</p>
         </footer>
     </body>

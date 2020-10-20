@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
-app.use(cors()) // Enable cors
 const Nodehun = require('nodehun')
 const fs = require('fs')
 const path = require('path')
@@ -26,11 +25,7 @@ async function getSpellchecker (language) {
       dictionary = hunspellCache[language] || await getDictionary(language)
     } catch (e) {
       console.error(e)
-      res.status(500).send(`Could not find dictionary for ${language}`)
       return
-    }
-    if (!dictionary) {
-      res.status(500).send(`Could not find dictionary for ${language}`)
     }
     nodehun = new Nodehun(Buffer.from(dictionary.aff), Buffer.from(dictionary.dic))
     hunspellCache[language] = nodehun
@@ -38,11 +33,7 @@ async function getSpellchecker (language) {
   return nodehun
 }
 
-app.use(express.static('public'))
-
-app.get('/spellcheck/:language/:word', async (req, res) => {
-  const word = req.params.word
-  const language = req.params.language
+async function spellcheck (word, language) {
   const spellchecker = await getSpellchecker(language)
   const isCorrect = await spellchecker.spell(word)
   const result = {
@@ -53,7 +44,26 @@ app.get('/spellcheck/:language/:word', async (req, res) => {
     const suggestions = await spellchecker.suggest(word)
     result.suggestions = suggestions
   }
-  res.send(result)
+  return result
+}
+
+app.use(express.static('public'))
+app.use(express.json())
+app.use(cors()) // Enable cors
+
+// Routes
+
+app.get('/spellcheck/:language/:word', async (req, res) => {
+  res.send(await spellcheck(req.params.word, req.params.language))
+})
+
+app.post('/spellcheck/:language', async (req, res) => {
+  const words = req.body.text.split(' ')
+  const results = []
+  for (let i = 0; i < words.length; i++) {
+    results.push(await spellcheck(words[i], req.params.language))
+  }
+  res.send(results)
 })
 
 app.get('/list/languages', (req, res) => {

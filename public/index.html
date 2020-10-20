@@ -36,9 +36,11 @@
                 dictionaries. Supports 90 languages now.</p>
             <h2>API</h2>
             <ul>
-                <li><code>spellcheck/:language/:word</code>: Check the word in the given language for spelling mistakes.
+                <li>GET <code>spellcheck/:language/:word</code>: Check the word in the given language for spelling mistakes.
                     <a href="/spellcheck/en/Educashion">Example</a></li>
-                <li><code>list/languages</code>: List available languages. <a href="/list/languages">Example</a></li>
+                <li>POST <code>spellcheck/:language</code>: Check the words in the text passed for spelling mistakes.
+                    The posted body should be json with "text" key containing text.</li>
+                <li>GET <code>list/languages</code>: List available languages. <a href="/list/languages">Example</a></li>
             </ul>
             <p><a href="https://github.com/santhoshtr/spellchecker-webservice">Source code</a> | &copy; <a
                     href="https://thottingal.in">Santhosh Thottingal</a> | MIT Licensed</p>

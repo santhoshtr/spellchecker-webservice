@@ -2,7 +2,7 @@
 #!/bin/bash
 set -e
 set -u
-filename='dictionaries.json'
+filename='backends/hunspell/dictionaries.json'
 n=1
 packages=''
 while read line; do

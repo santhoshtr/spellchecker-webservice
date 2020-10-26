@@ -1,8 +1,7 @@
 # Spellchecker webservice
 
-* Uses hunspell dictionaries.
-* Provides spellcheck for 90 languages
-
+ * hunspell dictionaries are used for for 90 languages
+ * Can use any web api backend. Malayalam language use such an API.
 
 ## Installation and Usage
 

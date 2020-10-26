@@ -1,6 +1,15 @@
+@import url('https://rsms.me/inter/inter.css');
 :root {
-  --primary-color: #242424;
-  --text-color: #242424;
+  --primary-color-h: 200;
+  --primary-color-s: 32%;
+  --primary-color-l: 22%;
+  --primary-color: hsl(var(--primary-color-h), var(--primary-color-s), var(--primary-color-l));
+  --primary-color--light: hsl(var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + var(--lighten)));
+  --primary-color--dark: hsl(var(--primary-color-h), var(--primary-color-s), calc(var(--primary-color-l) + var(--darken)));
+  --secondary-color: hsl(calc(var(--primary-color-h) + 180), var(--primary-color-s), var( --primary-color-l));
+  --lighten: 15%;
+  --darken: -15%;
+  --text-color: var(--primary-color);
   --white: #ffffff;
 }
 
@@ -16,73 +25,63 @@ body {
   margin: 0;
 }
 
-header {
+.grid-container {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+.header {
   padding: 1em;
   background: var(--primary-color);
   color: var(--white);
 }
 
-a {
-  color: var(--primary-color);
-}
-
-footer {
-  padding: 0.8em;
-  font-size: 1em;
-  border-top: 1px solid var(--primary-color);
-  text-align: left;
-}
-
-h1 {
-  margin: 0;
-}
-
-.container {
-  display: block;
+.main {
   padding: 1em;
   margin: auto;
   max-width: 600px;
   min-height: 40vh;
 }
 
-.row,
-.column {
-  box-sizing: border-box;
-  display: flex;
-  flex: 0 1 auto;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 4px;
+.footer {
+  padding: 0.8em;
+  font-size: 1em;
+  border-top: 1px solid var(--primary-color);
+  text-align: left;
 }
 
-.source-container,
-.target-container {
-  display: flex;
-  flex-direction: column;
-  font-family: "Inter", sans-serif;
+a {
+  color: var(--primary-color);
+}
+
+
+h1 {
+  margin: 0;
 }
 
 .form {
   display: flex;
   justify-content: space-between;
   text-align: left;
-  align-items: left;
   flex-direction: column;
 }
 
 input,
 select {
   padding: 8px;
-  margin: 0 8px;
+  margin: 8px;
   font-weight: 800;
   width: 400px;
   align-self: flex-end;
+  border-color:  var(--primary-color);
 }
 
 button {
   padding: 8px;
   font-weight: 800;
- }
+  color: var(--primary-color);
+}
 
 progress {
   height: 4px;
@@ -95,5 +94,5 @@ progress {
 }
 
 .result {
-    margin-top: 2em;
+  margin-top: 2em;
 }

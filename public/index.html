@@ -9,11 +9,11 @@
         <link href="style/main.css" rel="stylesheet" type="text/css" />
     </head>
 
-    <body>
-        <header>
+    <body class="grid-container">
+        <header class="header">
             <h1>Spellchecker</h1>
         </header>
-        <main class="container">
+        <main class="main">
             <form class="form" onSubmit="return onSubmit()">
                 <div class="row">
                     <label for="word" class="row">Word</label>
@@ -31,9 +31,9 @@
                 <progress id="progress" class="row"></progress>
             </section>
         </main>
-        <footer>
+        <footer class="footer">
             <p>This spellchecker service is based on <a href="https://hunspell.github.io/">hunspell</a> spelling
-                dictionaries. Supports 90 languages now.</p>
+                dictionaries. Supports 90 languages now. For Malayalam, <a href="https://morph.smc.org.in/spellcheck">mlmorph spellchecker API</a> is used </p>
             <h2>API</h2>
             <ul>
                 <li>GET <code>spellcheck/:language/:word</code>: Check the word in the given language for spelling mistakes.
@@ -42,6 +42,7 @@
                     The posted body should be json with "text" key containing text.</li>
                 <li>GET <code>list/languages</code>: List available languages. <a href="/list/languages">Example</a></li>
             </ul>
+            <p><a href="https://codepen.io/santhoshtr/pen/bGewGzB">An example</a> where this API used with TinyMCE Editor</p>
             <p><a href="https://github.com/santhoshtr/spellchecker-webservice">Source code</a> | &copy; <a
                     href="https://thottingal.in">Santhosh Thottingal</a> | MIT Licensed</p>
         </footer>

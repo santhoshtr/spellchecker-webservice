@@ -8,9 +8,10 @@ function spellcheck (word, language) {
   }).then(response => response.json())
 }
 
-function onResult (result) {
+function onResult (results) {
   const statusNode = document.getElementById('status')
   const suggestionsNode = document.getElementById('suggestions')
+  const result = results[0]
   suggestionsNode.innerHTML = ''
   if (result.spellcheck) {
     statusNode.textContent = `✔️ ${result.word}`
